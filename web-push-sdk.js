@@ -81,9 +81,9 @@ wps.getToken = function () {
     }
   }).catch((err) => {
     console.log("An error occurred while retrieving token. ", err);
-  }).finally(()=>{
+  }).finally(() => {
     wps.initContext(pushOpts);
-  })
+  });
   // [END messaging_get_token]
 };
 
@@ -168,8 +168,7 @@ wps.initContext = function (config) {
       follower.SNIPPET_VERSION = "0.1.0";
       follower.load();
       follower.initialize({"Prime Data": opts});
-
-      follower.track("reached_channel", {"notification_token": wps.notification_token});
+      follower.track("reached_channel", {"web_push": {"notification_token": wps.notification_token}});
     }
   }();
 
@@ -179,4 +178,4 @@ wps.initWebPushSDK = function () {
   wps.requestPermission();
   wps.getToken();
   wps.receiveMessage();
-}
+};
