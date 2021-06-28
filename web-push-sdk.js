@@ -81,7 +81,9 @@ wps.getToken = function () {
     }
   }).catch((err) => {
     console.log("An error occurred while retrieving token. ", err);
-  });
+  }).finally(()=>{
+    wps.initContext(pushOpts);
+  })
   // [END messaging_get_token]
 };
 
@@ -189,5 +191,4 @@ wps.initWebPushSDK = function () {
   wps.requestPermission();
   wps.getToken();
   wps.receiveMessage();
-  wps.initContext(pushOpts);
 }
