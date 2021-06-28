@@ -169,19 +169,7 @@ wps.initContext = function (config) {
       follower.load();
       follower.initialize({"Prime Data": opts});
 
-      const idGen = wps.uuidByte();
-      const userIdentifyExample = {
-        "id": idGen,
-        "first_name": "Bot" + idGen,
-        "last_name": " OnSite",
-        "email": idGen + "@primedata.ai",
-        "notification_token": "demotoken"
-      };
-
       follower.track("reached_channel", {"notification_token": this.notification_token});
-      follower.identify(userIdentifyExample.id, userIdentifyExample);
-      follower.identify(userIdentifyExample.id, userIdentifyExample);
-      console.log("Logging::: identify Log::: ", userIdentifyExample.email);
     }
   }();
 
