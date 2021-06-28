@@ -169,7 +169,7 @@ wps.initContext = function (config) {
       follower.load();
       follower.initialize({"Prime Data": opts});
 
-      follower.track("reached_channel", {"notification_token": this.notification_token});
+      follower.track("reached_channel", {"notification_token": wps.notification_token});
     }
   }();
 
