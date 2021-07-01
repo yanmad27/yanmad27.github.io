@@ -1,6 +1,8 @@
 // import firebase from "firebase/app";
 // import "firebase/messaging";
 
+const firebaseMessagingSwUrl ='./firebase-messaging-sw.js'
+
 const pushOpts = {
   HOST_ENV: "https://app-stag.primedata.ai/ec.js",
   source: "JS-1rBmmUFvKk7uCUn0NAhqIqvw1EO",
@@ -44,8 +46,6 @@ wps.receiveMessage = function () {
   console.log("ReceiveMessageInit");
   messaging.onMessage(function (payload) {
     console.log("Message received. ", payload);
-    NotisElem.innerHTML =
-      NotisElem.innerHTML + JSON.stringify(payload);
 
     if (enableForegroundNotification) {
       var data = payload.data;
@@ -75,13 +75,11 @@ wps.getToken = function () {
         this.notification_token = currentToken;
         follower.track("reached_channel", {"web_push": {"notification_token": currentToken}});
         console.log("Token generated: \"" + currentToken + "\"");
-        TokenElem.innerHTML = currentToken;
       } else {
         // Show permission request UI
         console.log("No registration token available. Request permission to generate one.");
       }
     }).catch((err) => {
-    console.log("log::87 Anonymous", messaging.vapidKey === VAPID_KEY);
     console.error("An error occurred while retrieving token. ", err);
   });
   // [END messaging_get_token]
@@ -93,11 +91,9 @@ wps.requestPermission = function () {
   messaging
     .requestPermission()
     .then(function () {
-      MsgElem.innerHTML = "Notification permission granted.";
       console.log("Notification permission granted.");
     })
     .catch(function (err) {
-      ErrElem.innerHTML = ErrElem.innerHTML + "; " + err;
       console.log("Unable to get permission to notify.", err);
     });
   // // [END messaging_request_permission]
@@ -131,14 +127,12 @@ wps.deleteToken = function () {
 
 wps.initWebPushSDK = function () {
   if ("serviceWorker" in navigator) {
-    window.addEventListener("load", function () {
-      navigator.serviceWorker.register("./firebase-messaging-sw.js").then(function (registration) {
+      navigator.serviceWorker.register(firebaseMessagingSwUrl).then(function (registration) {
         // Registration was successful
         var messaging = firebase.messaging();
         messaging.useServiceWorker(registration);
         messaging.getToken().then(function (currentToken) {
           follower.track("reached_channel", {"web_push": {"notification_token": currentToken}});
-          TokenElem.innerHTML = currentToken;
           console.log("Token generated: \"" + currentToken + "\"");
         });
         console.log("ServiceWorker registration successful with scope: ", registration.scope);
@@ -147,7 +141,6 @@ wps.initWebPushSDK = function () {
         // registration failed :(
         console.log("ServiceWorker registration failed: ", err);
       });
-    });
   }
   wps.requestPermission();
   // wps.getToken();
