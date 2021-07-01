@@ -65,7 +65,7 @@ wps.getToken = async function () {
   // [START messaging_get_token]
   // Get registration token. Initially this makes a network call, once retrieved
   // subsequent calls to getToken will return from cache.
-  messaging.getToken({vapidKey:VAPID_KEY})
+  messaging.getToken()
     // console.log("log::69 getToken", token);
     .then((currentToken) => {
       if (currentToken) {
