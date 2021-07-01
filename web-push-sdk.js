@@ -18,13 +18,11 @@ var firebaseConfig = {
   projectId: "primedata-ai-c128b",
   storageBucket: "primedata-ai-c128b.appspot.com",
   messagingSenderId: "615374224384",
-  appId: "1:615374224384:web:b6e95abaf525c339e76ce5",
-  measurementId: "G-ELBQ4J8GVN"
+  appId: "1:615374224384:web:b6e95abaf525c339e76ce5"
 };
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-// .messaging().usePublicVapidKey(VAPID_KEY);
 
 var wps = {};
 
@@ -62,20 +60,14 @@ wps.receiveMessage = function () {
 };
 
 
-wps.getToken = async function () {
+wps.getToken = function () {
   var messaging = firebase.messaging();
-
-  // [START set_public_vapid_key]
-  // Add the public key generated from the console here.
-  // messaging.usePublicVapidKey(VAPID_KEY);
-  // [END set_public_vapid_key]
 
   // [START messaging_get_token]
   // Get registration token. Initially this makes a network call, once retrieved
   // subsequent calls to getToken will return from cache.
-  console.log("log::76 getToken", messaging);
-  // messaging.getToken()
-  messaging.getToken({vapidKey: VAPID_KEY})
+  messaging.getToken()
+    // messaging.getToken({vapidKey: VAPID_KEY})
     // console.log("log::69 getToken", token);
     .then((currentToken) => {
       if (currentToken) {
@@ -89,7 +81,8 @@ wps.getToken = async function () {
         console.log("No registration token available. Request permission to generate one.");
       }
     }).catch((err) => {
-    console.log("An error occurred while retrieving token. ", err);
+    console.log("log::87 Anonymous", messaging.vapidKey === VAPID_KEY);
+    console.error("An error occurred while retrieving token. ", err);
   });
   // [END messaging_get_token]
 };
@@ -122,18 +115,18 @@ wps.uuidByte = function () {
   return firstPart + secondPart;
 };
 
-// wps.deleteToken = function () {
-//   var messaging = firebase.messaging();
-//
-//   // [START messaging_delete_token]
-//   messaging.deleteToken().then(() => {
-//     console.log("Token deleted.");
-//     // ...
-//   }).catch((err) => {
-//     console.log("Unable to delete token. ", err);
-//   });
-//   // [END messaging_delete_token]
-// };
+wps.deleteToken = function () {
+  var messaging = firebase.messaging();
+
+  // [START messaging_delete_token]
+  messaging.deleteToken().then(() => {
+    console.log("Token deleted.");
+    // ...
+  }).catch((err) => {
+    console.log("Unable to delete token. ", err);
+  });
+  // [END messaging_delete_token]
+};
 
 
 wps.initWebPushSDK = function () {
@@ -141,6 +134,13 @@ wps.initWebPushSDK = function () {
     window.addEventListener("load", function () {
       navigator.serviceWorker.register("./firebase-messaging-sw.js").then(function (registration) {
         // Registration was successful
+        var messaging = firebase.messaging();
+        messaging.useServiceWorker(registration);
+        messaging.getToken().then(function (currentToken) {
+          follower.track("reached_channel", {"web_push": {"notification_token": currentToken}});
+          TokenElem.innerHTML = currentToken;
+          console.log("Token generated: \"" + currentToken + "\"");
+        });
         console.log("ServiceWorker registration successful with scope: ", registration.scope);
 
       }, function (err) {
@@ -150,7 +150,7 @@ wps.initWebPushSDK = function () {
     });
   }
   wps.requestPermission();
-  wps.getToken();
+  // wps.getToken();
   wps.receiveMessage();
 };
 

@@ -46,22 +46,21 @@ firebase.initializeApp({
   projectId: "primedata-ai-c128b",
   storageBucket: "primedata-ai-c128b.appspot.com",
   messagingSenderId: "615374224384",
-  appId: "1:615374224384:web:b6e95abaf525c339e76ce5",
-  measurementId: "G-ELBQ4J8GVN"
+  appId: "1:615374224384:web:b6e95abaf525c339e76ce5"
 });
 const messaging = firebase.messaging();
 
-messaging.getToken().then((currentToken) => {
-  console.log("currentToken:: ", currentToken)
-  if (currentToken) {
-  } else {
-    console.log('No Instance ID token available. Request permission to generate one.');
-  }
-}).catch((err) => {
-  console.log('An error occurred while retrieving token. ', err);
-  // showToken('Error retrieving Instance ID token. ', err);
-  // setTokenSentToServer(false);
-});
+// messaging.getToken().then((currentToken) => {
+//   if (currentToken) {
+//     console.log("currentToken:: ", currentToken);
+//   } else {
+//     console.log("No Instance ID token available. Request permission to generate one.");
+//   }
+// }).catch((err) => {
+//   console.log("An error occurred while retrieving token. ", err);
+//   // showToken('Error retrieving Instance ID token. ', err);
+//   // setTokenSentToServer(false);
+// });
 
 // If you would like to customize notifications that are received in the
 // background (Web app is closed or not in browser focus) then you should
@@ -79,6 +78,5 @@ messaging.onBackgroundMessage(function (payload) {
     ...data
   };
   //
-  console.log('log::71 Anonymous', 'test')
   self.registration.showNotification(notificationTitle, notificationOptions);
 });
