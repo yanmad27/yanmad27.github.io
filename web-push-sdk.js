@@ -8,7 +8,7 @@ const pushOpts = {
   writeKey: "1rBmmTYdRljPZCezA8KbBtTZQPd"
 };
 
-var VAPID_KEY = "BAuYUnETiH3FwV-xKpK6e0msycZGx3m1vN9ki0OFVkAw2srLTFK7x0mSPx53hTS0zGuOyaJuLIJe3-iOvj4688Y";
+var VAPID_KEY = "BGRpM9JrNCP65NP9GrF7V-nqGDGnp32x-4eN97jVWFfQuEZRzpdnst-jLym6G4HsBaIusCQBhSYwZaJKyQzAw1Q";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 // Your web app's Firebase configuration
