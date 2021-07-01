@@ -68,5 +68,6 @@ messaging.onBackgroundMessage(function (payload) {
     ...data
   };
   //
+  console.log('log::71 Anonymous', 'test')
   self.registration.showNotification(notificationTitle, notificationOptions);
 });
