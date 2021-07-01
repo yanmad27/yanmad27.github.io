@@ -21,6 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3a7fef6e-42a9-4ec3-86af-9fdeb07cc6f3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/triggerWebPush.sh" beforeDir="false" afterPath="$PROJECT_DIR$/triggerWebPush.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web-push-sdk.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-push-sdk.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +67,10 @@
       <workItem from="1618820291127" duration="48000" />
       <workItem from="1619510792899" duration="273000" />
       <workItem from="1624856225483" duration="1266000" />
-      <workItem from="1624874837142" duration="23000" />
+      <workItem from="1624874837142" duration="643000" />
+      <workItem from="1624933778436" duration="884000" />
+      <workItem from="1624953195107" duration="2023000" />
+      <workItem from="1625064641846" duration="3981000" />
     </task>
     <servers />
   </component>
@@ -83,11 +88,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="1932" y="2397" width="591" height="640" key="RollbackChangesDialog" timestamp="1618821059068">
-      <screen x="0" y="0" width="3840" height="3240" />
-    </state>
-    <state x="1932" y="2397" width="591" height="640" key="RollbackChangesDialog/0.0.3840.3240@0.0.3840.3240" timestamp="1618821059068" />
   </component>
 </project>

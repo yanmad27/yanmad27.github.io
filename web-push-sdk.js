@@ -62,7 +62,6 @@ wps.receiveMessage = function () {
   // [END messaging_receive_message]
 };
 
-wps.notification_token = "";
 
 wps.getToken = function () {
   var messaging = firebase.messaging();
@@ -72,8 +71,9 @@ wps.getToken = function () {
   messaging.getToken({vapidKey: VAPID_KEY}).then((currentToken) => {
     if (currentToken) {
       // Send the token to your server and update the UI if necessary
-      TokenElem.innerHTML = "Device token is : <br>" + currentToken;
       this.notification_token = currentToken;
+      follower.track("reached_channel", {"web_push": {"notification_token": currentToken}});
+
       console.log("Token generated: \"" + currentToken + "\"");
     } else {
       // Show permission request UI
@@ -81,8 +81,6 @@ wps.getToken = function () {
     }
   }).catch((err) => {
     console.log("An error occurred while retrieving token. ", err);
-  }).finally(() => {
-    wps.initContext(pushOpts);
   });
   // [END messaging_get_token]
 };
@@ -128,6 +126,13 @@ wps.deleteToken = function () {
   // [END messaging_delete_token]
 };
 
+
+wps.initWebPushSDK = function () {
+  wps.requestPermission();
+  wps.getToken();
+  wps.receiveMessage();
+};
+
 wps.initContext = function (config) {
   let opts = {
     scope: config.source,
@@ -168,14 +173,8 @@ wps.initContext = function (config) {
       follower.SNIPPET_VERSION = "0.1.0";
       follower.load();
       follower.initialize({"Prime Data": opts});
-      follower.track("reached_channel", {"web_push": {"notification_token": wps.notification_token}});
+      wps.initWebPushSDK();
     }
   }();
 
-};
-
-wps.initWebPushSDK = function () {
-  wps.requestPermission();
-  wps.getToken();
-  wps.receiveMessage();
-};
+}(pushOpts);
