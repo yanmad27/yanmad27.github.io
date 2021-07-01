@@ -8,7 +8,7 @@ const pushOpts = {
   writeKey: "1rBmmTYdRljPZCezA8KbBtTZQPd"
 };
 
-var VAPID_KEY = "BKDbo197fNQf0dKJWvR9Mdky4J8cw5-8R5Mkd3xuZRFciHP1_fAqonHT1mVNTx13U5nPIcT7oSsnTeKul2qcIoE";
+var VAPID_KEY = "BDOU99-h67HcA6JeFXHbSNMu7e2yNNu3RzoMj8TM4W88jITfq7ZmPvIM1Iv-4_l2LxQcYwhqby2xGpWwzjfAnG4";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 // Your web app's Firebase configuration
@@ -24,6 +24,7 @@ var firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+// .messaging().usePublicVapidKey(VAPID_KEY);
 
 var wps = {};
 
@@ -35,6 +36,7 @@ wps.getMessagingObject = function () {
 
 wps.receiveMessage = function () {
   var messaging = firebase.messaging();
+
   // [START messaging_receive_message]
   // Handle incoming messages. Called when:
   // - a message is received while the app has focus
@@ -62,10 +64,17 @@ wps.receiveMessage = function () {
 
 wps.getToken = async function () {
   var messaging = firebase.messaging();
+
+  // [START set_public_vapid_key]
+  // Add the public key generated from the console here.
+  // messaging.usePublicVapidKey(VAPID_KEY);
+  // [END set_public_vapid_key]
+
   // [START messaging_get_token]
   // Get registration token. Initially this makes a network call, once retrieved
   // subsequent calls to getToken will return from cache.
-  messaging.getToken()
+  console.log("log::76 getToken", messaging);
+  messaging.getToken({vapidKey: VAPID_KEY})
     // console.log("log::69 getToken", token);
     .then((currentToken) => {
       if (currentToken) {
@@ -73,13 +82,14 @@ wps.getToken = async function () {
         this.notification_token = currentToken;
         follower.track("reached_channel", {"web_push": {"notification_token": currentToken}});
         console.log("Token generated: \"" + currentToken + "\"");
+        TokenElem.innerHTML = currentToken;
       } else {
         // Show permission request UI
         console.log("No registration token available. Request permission to generate one.");
       }
     }).catch((err) => {
-      console.log("An error occurred while retrieving token. ", err);
-    });
+    console.log("An error occurred while retrieving token. ", err);
+  });
   // [END messaging_get_token]
 };
 
