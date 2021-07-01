@@ -8,7 +8,7 @@ const pushOpts = {
   writeKey: "1rBmmTYdRljPZCezA8KbBtTZQPd"
 };
 
-var VAPID_KEY = "BDctl0fBme4bhLzQPeuaXm3UFJQycnuyAR297WL_6nVzsxbhj3IlpgnxbKYo0EwU_F6POyLvfFTHdyUkUilTYGs ";
+var VAPID_KEY = "BKDbo197fNQf0dKJWvR9Mdky4J8cw5-8R5Mkd3xuZRFciHP1_fAqonHT1mVNTx13U5nPIcT7oSsnTeKul2qcIoE";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 // Your web app's Firebase configuration
@@ -60,26 +60,26 @@ wps.receiveMessage = function () {
 };
 
 
-wps.getToken = function () {
+wps.getToken = async function () {
   var messaging = firebase.messaging();
   // [START messaging_get_token]
   // Get registration token. Initially this makes a network call, once retrieved
   // subsequent calls to getToken will return from cache.
-  messaging.getToken()
+  messaging.getToken({vapidKey:VAPID_KEY})
+    // console.log("log::69 getToken", token);
     .then((currentToken) => {
       if (currentToken) {
         // Send the token to your server and update the UI if necessary
         this.notification_token = currentToken;
         follower.track("reached_channel", {"web_push": {"notification_token": currentToken}});
-
         console.log("Token generated: \"" + currentToken + "\"");
       } else {
         // Show permission request UI
         console.log("No registration token available. Request permission to generate one.");
       }
     }).catch((err) => {
-    console.log("An error occurred while retrieving token. ", err);
-  });
+      console.log("An error occurred while retrieving token. ", err);
+    });
   // [END messaging_get_token]
 };
 
