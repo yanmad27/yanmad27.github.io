@@ -1,9 +1,14 @@
 // import firebase from "firebase/app";
 // import "firebase/messaging";
 
-// var VAPID_KEY = "BEgtebCndt9fe_j2sTbf_rPxAqrirjhmQyu64sNt_DHmACRm1G45yOozZhPiQyVUhUgfeH2rQI4IL4AmpjxO-F0";
-var VAPID_KEY = "BNGGRmSbmwVN0MO-xnqBSNQ013nSrX5YG25agm_DHXIAce8JEIY3R0ZBh6PLhkzjwLRg6FOKYxXJMK65soeC6vo";
+const pushOpts = {
+  HOST_ENV: "https://app-stag.primedata.ai/ec.js",
+  source: "JS-1rBmmUFvKk7uCUn0NAhqIqvw1EO",
+  POWEHI_URL: "https://powehi-stag.primedata.ai",
+  writeKey: "1rBmmTYdRljPZCezA8KbBtTZQPd"
+};
 
+var VAPID_KEY = "BNGGRmSbmwVN0MO-xnqBSNQ013nSrX5YG25agm_DHXIAce8JEIY3R0ZBh6PLhkzjwLRg6FOKYxXJMK65soeC6vo";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 // Your web app's Firebase configuration
@@ -16,13 +21,6 @@ var firebaseConfig = {
   messagingSenderId: "914795230254",
   appId: "1:914795230254:web:644e302f5b9771952a9bbf",
   measurementId: "G-9H6D3M66JK"
-};
-
-const pushOpts = {
-  HOST_ENV: "https://app-stag.primedata.ai/ec.js",
-  source: "JS-1rBmmUFvKk7uCUn0NAhqIqvw1EO",
-  POWEHI_URL: "https://powehi-stag.primedata.ai",
-  writeKey: "1rBmmTYdRljPZCezA8KbBtTZQPd"
 };
 
 // Initialize Firebase
