@@ -8,7 +8,7 @@ const pushOpts = {
   writeKey: "1rBmmTYdRljPZCezA8KbBtTZQPd"
 };
 
-var VAPID_KEY = "BDOU99-h67HcA6JeFXHbSNMu7e2yNNu3RzoMj8TM4W88jITfq7ZmPvIM1Iv-4_l2LxQcYwhqby2xGpWwzjfAnG4";
+var VAPID_KEY = "BD6tqpCWiZiUFvwWK7ZhR2Te1za45HeSsHrTDJRgUDUOuuDwIoLfOh6E5dEe-0f2PCEVN13sCIPK2jqSQ3cdODo";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 // Your web app's Firebase configuration
@@ -74,6 +74,7 @@ wps.getToken = async function () {
   // Get registration token. Initially this makes a network call, once retrieved
   // subsequent calls to getToken will return from cache.
   console.log("log::76 getToken", messaging);
+  // messaging.getToken()
   messaging.getToken({vapidKey: VAPID_KEY})
     // console.log("log::69 getToken", token);
     .then((currentToken) => {
