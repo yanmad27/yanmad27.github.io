@@ -41,16 +41,27 @@ importScripts("https://www.gstatic.com/firebasejs/8.3.1/firebase-messaging.js");
 
 // Initialize Firebase
 firebase.initializeApp({
-  apiKey: "AIzaSyDbHQHcynAHbb6IUrhTghw4rc5XHu28h5M",
-  authDomain: "primedata-ai.firebaseapp.com",
-  databaseURL: "https://primedata-ai.firebaseio.com",
-  projectId: "primedata-ai",
-  storageBucket: "primedata-ai.appspot.com",
-  messagingSenderId: "914795230254",
-  appId: "1:914795230254:web:644e302f5b9771952a9bbf",
-  measurementId: "G-9H6D3M66JK"
+  apiKey: "AIzaSyB0cQZgXYVCTaKE6dk_voN5tle_HXNCaUU",
+  authDomain: "primedata-ai-c128b.firebaseapp.com",
+  projectId: "primedata-ai-c128b",
+  storageBucket: "primedata-ai-c128b.appspot.com",
+  messagingSenderId: "615374224384",
+  appId: "1:615374224384:web:b6e95abaf525c339e76ce5",
+  measurementId: "G-ELBQ4J8GVN"
 });
 const messaging = firebase.messaging();
+
+messaging.getToken().then((currentToken) => {
+  console.log("currentToken:: ", currentToken)
+  if (currentToken) {
+  } else {
+    console.log('No Instance ID token available. Request permission to generate one.');
+  }
+}).catch((err) => {
+  console.log('An error occurred while retrieving token. ', err);
+  // showToken('Error retrieving Instance ID token. ', err);
+  // setTokenSentToServer(false);
+});
 
 // If you would like to customize notifications that are received in the
 // background (Web app is closed or not in browser focus) then you should

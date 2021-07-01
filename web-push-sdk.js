@@ -8,19 +8,18 @@ const pushOpts = {
   writeKey: "1rBmmTYdRljPZCezA8KbBtTZQPd"
 };
 
-var VAPID_KEY = "BGRpM9JrNCP65NP9GrF7V-nqGDGnp32x-4eN97jVWFfQuEZRzpdnst-jLym6G4HsBaIusCQBhSYwZaJKyQzAw1Q";
+var VAPID_KEY = "BDctl0fBme4bhLzQPeuaXm3UFJQycnuyAR297WL_6nVzsxbhj3IlpgnxbKYo0EwU_F6POyLvfFTHdyUkUilTYGs ";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 // Your web app's Firebase configuration
 var firebaseConfig = {
-  apiKey: "AIzaSyDbHQHcynAHbb6IUrhTghw4rc5XHu28h5M",
-  authDomain: "primedata-ai.firebaseapp.com",
-  databaseURL: "https://primedata-ai.firebaseio.com",
-  projectId: "primedata-ai",
-  storageBucket: "primedata-ai.appspot.com",
-  messagingSenderId: "914795230254",
-  appId: "1:914795230254:web:644e302f5b9771952a9bbf",
-  measurementId: "G-9H6D3M66JK"
+  apiKey: "AIzaSyB0cQZgXYVCTaKE6dk_voN5tle_HXNCaUU",
+  authDomain: "primedata-ai-c128b.firebaseapp.com",
+  projectId: "primedata-ai-c128b",
+  storageBucket: "primedata-ai-c128b.appspot.com",
+  messagingSenderId: "615374224384",
+  appId: "1:615374224384:web:b6e95abaf525c339e76ce5",
+  measurementId: "G-ELBQ4J8GVN"
 };
 
 // Initialize Firebase
@@ -66,18 +65,19 @@ wps.getToken = function () {
   // [START messaging_get_token]
   // Get registration token. Initially this makes a network call, once retrieved
   // subsequent calls to getToken will return from cache.
-  messaging.getToken({vapidKey: VAPID_KEY}).then((currentToken) => {
-    if (currentToken) {
-      // Send the token to your server and update the UI if necessary
-      this.notification_token = currentToken;
-      follower.track("reached_channel", {"web_push": {"notification_token": currentToken}});
+  messaging.getToken()
+    .then((currentToken) => {
+      if (currentToken) {
+        // Send the token to your server and update the UI if necessary
+        this.notification_token = currentToken;
+        follower.track("reached_channel", {"web_push": {"notification_token": currentToken}});
 
-      console.log("Token generated: \"" + currentToken + "\"");
-    } else {
-      // Show permission request UI
-      console.log("No registration token available. Request permission to generate one.");
-    }
-  }).catch((err) => {
+        console.log("Token generated: \"" + currentToken + "\"");
+      } else {
+        // Show permission request UI
+        console.log("No registration token available. Request permission to generate one.");
+      }
+    }).catch((err) => {
     console.log("An error occurred while retrieving token. ", err);
   });
   // [END messaging_get_token]
@@ -111,27 +111,40 @@ wps.uuidByte = function () {
   return firstPart + secondPart;
 };
 
-wps.deleteToken = function () {
-  var messaging = firebase.messaging();
-
-  // [START messaging_delete_token]
-  messaging.deleteToken().then(() => {
-    console.log("Token deleted.");
-    // ...
-  }).catch((err) => {
-    console.log("Unable to delete token. ", err);
-  });
-  // [END messaging_delete_token]
-};
+// wps.deleteToken = function () {
+//   var messaging = firebase.messaging();
+//
+//   // [START messaging_delete_token]
+//   messaging.deleteToken().then(() => {
+//     console.log("Token deleted.");
+//     // ...
+//   }).catch((err) => {
+//     console.log("Unable to delete token. ", err);
+//   });
+//   // [END messaging_delete_token]
+// };
 
 
 wps.initWebPushSDK = function () {
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("./firebase-messaging-sw.js").then(function (registration) {
+        // Registration was successful
+        console.log("ServiceWorker registration successful with scope: ", registration.scope);
+
+      }, function (err) {
+        // registration failed :(
+        console.log("ServiceWorker registration failed: ", err);
+      });
+    });
+  }
   wps.requestPermission();
   wps.getToken();
   wps.receiveMessage();
 };
 
 wps.initContext = function (config) {
+
   let opts = {
     scope: config.source,
     url: config.POWEHI_URL,

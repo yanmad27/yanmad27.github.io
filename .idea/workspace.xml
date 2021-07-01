@@ -21,6 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3a7fef6e-42a9-4ec3-86af-9fdeb07cc6f3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firebase-messaging-sw.js" beforeDir="false" afterPath="$PROJECT_DIR$/firebase-messaging-sw.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/triggerWebPush.sh" beforeDir="false" afterPath="$PROJECT_DIR$/triggerWebPush.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web-push-sdk.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-push-sdk.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,6 +75,7 @@
       <workItem from="1624933778436" duration="884000" />
       <workItem from="1624953195107" duration="2023000" />
       <workItem from="1625064641846" duration="5894000" />
+      <workItem from="1625131462063" duration="2296000" />
     </task>
     <servers />
   </component>
