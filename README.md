@@ -1,9 +1,0 @@
-#WEB PUSH SDK
-
-###INTRO
-
-### DEMO
-
-###USAGE
-
-###TEST
