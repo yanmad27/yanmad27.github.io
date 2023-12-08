@@ -1,0 +1,242 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\urlNewWindow}[2]{\href[pdfnewwindow=true]{#1}{\underline{#2}}}
+
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    \textbf{\Huge \scshape PHAN NGUYEN KHAC DOAN} \\ \vspace{1pt}
+    \small +84-328-263-250 $|$ \href{mailto:yanmad27@gmail.com}{\underline{yanmad27@gmail.com}} $|$ 
+    \urlNewWindow{https://linkedin.com/in/yanmad27}{linkedin.com/yanmad27} $|$
+    \urlNewWindow{https://github.com/yanmad27}{github.com/yanmad27}
+\end{center}
+
+
+
+
+%-----------INFORMATION-----------
+\section{Sumary}
+  \resumeSubHeadingListStart
+    \item
+    {Full-stack developer with four years of experience in software development. Having a robust skill set encompassing both front-end and back-end technologies. Skilled in automated testing,  improved code quality, system reliability, and team productivity.}
+  \resumeSubHeadingListEnd
+
+    
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of Science - VNUHCM}{}
+      {Bachelor of Software Engineering}{2016 -- 2020}
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Full-stack Developer}{}
+      {NT Space}{Jul 2023 - Nov 2023}
+      \resumeItemListStart
+        \resumeItem{Designed front-tend codebase using App Router in NextJS}
+        \resumeItem{Developed core components base on Ant Design}
+        \resumeItem{Developed ERP, E-Learing system by Frappe framework, NestJS }
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Full-stack Developer}{}
+      {Woss Corporation}{Aug 2021 - Jul 2023}
+      \resumeItemListStart
+        \resumeItem{Developed Workflow Builder by ReactFlow, SWR, and NestJS}
+        \resumeItem{Developed Broadcast Calendar using ReactJS, NestJS, and FireBase Push Notification}
+        \resumeItem{Developed State Machine and applied Nest CQRS to verify video}
+        \resumeItem{Developed Digital Asset Management System API using NestJS, Redis, MySQL, Docker}
+        \resumeItem{Implement Postgres Failover by Docker Swarm}
+        \resumeItem{Implemented E2E Testing using Cucumber and Puppeteer, performance testing using JMeter}
+        \resumeItem{Implemented CI/CD System using Jenkins, Docker and Github Action}
+        \resumeItem{Implemented Monitoring and Alert System using Grafana, Prometheus, Telegram, Email}
+        \resumeItem{Implemented Chat Support using TelegramApi}
+    \resumeItemListEnd
+
+    \resumeSubheading
+      {Front-end Developer}{}
+      {PrimeData}{Aug 2020 - Aug 2021}
+      \resumeItemListStart
+        \resumeItem{Developed Segment and Campaign Builder using ReactFlow, ReactJS}
+        \resumeItem{Developed ValidatorHOC for every input using ReactHookForm}
+        \resumeItem{Developed SDKs using Service worker, SocketIO, FireBasePushNotification}
+        \resumeItem{Implemented Data Visualization using AntD Chart, Apex Chart}
+        \resumeItem{Implemented FaceBook OAuth to launch Campaign Ads}
+        \resumeItem{Implemented E2E Testing using Cucumber and Puppeteer}
+        \resumeItem{Collaborated with the Design team to ensure user experience}
+        \resumeItem{Adopted Agile methodology for software development}
+      \resumeItemListEnd
+      
+    \resumeSubheading
+      {Web Developer}{}
+      {Splus Software JSC}{Aug 2019 - Feb 2020}
+      \resumeItemListStart
+        \resumeItem{Developed front-end using MaterialUI, ReactJS, Redux, ReduxThunk, ReactDnD}
+        \resumeItem{Developed back-end using Java Spring Boot, SQL Server}
+        \resumeItem{Applied Dictionary Algorithm}
+        \resumeItem{Deployed production Linux server}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+\section{Side Projects}
+    \resumeSubHeadingListStart
+        \resumeProjectHeading
+          {\textbf{Finance Bot} $|$ \emph{Go, TelegramApi, Webhook, GoogleSheets}}{}
+          \resumeItemListStart
+            \resumeItem{Developed Telegram Bot using GO calculate prices, and updated Google sheets}
+            \resumeItem{Implemented expression calculator from text}
+          \resumeItemListEnd
+        \resumeProjectHeading
+          {\textbf{I18n Tranlsator} $|$ \emph{ExpressJS, GoogleTranslateApi, JSZip}}{}
+          \resumeItemListStart
+            \resumeItem{Developed a full-stack web application using ExpressJS, HTML}
+            \resumeItem{Implement Google Translate API to translate multiple files at the same time}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{Jotech360} $|$ \emph{Krpano,WebRTC, React, PostgreSQL, StorJ}}{}
+          \resumeItemListStart
+            \resumeItem{Developed an application that allowed interacting 360 views together}
+            \resumeItem{Implement call video using WebRTC}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{Shorten URL} $|$ \emph{GoogleSheets, NextJS, NestJS, Redis}}{}
+          \resumeItemListStart
+            \resumeItem{Developed a full-stack web application to tiny url}
+            \resumeItem{Implemented Google OAuth}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: TypesScript, JavaScript, MySQL, Postgres, HTML/CSS, GO} \\
+     \textbf{Frameworks}{: NestJS, NextJS, ReactJS, GoGin } \\
+     \textbf{Tools}{: Git, Docker, Jenkins, VSCode, WebStorm, GoLand, DataGrip} \\
+     \textbf{Libraries}{: Prometheus, Grafana, AntD, Redis, ElasticSearch}
+    }}
+ \end{itemize}
+
+
+%-------------------------------------------
+\end{document}
